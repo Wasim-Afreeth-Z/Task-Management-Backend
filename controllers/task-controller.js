@@ -17,11 +17,11 @@ const CreateTask = (req, res) => {
         completetask: req.body.completetask
     };
     let sql = "INSERT INTO tasks SET ?";
-    db.query(sql, details, (error) => {
+    db.query(sql, details, async (error) => {
         if (error) {
-            res.send({ status: false, message: error });
+           await  res.send({ status: false, message: error });
         } else {
-            res.send({ status: true, message: "Task Created Successfully" });
+           await res.send({ status: true, message: "Task Created Successfully" });
         }
     });
 }
@@ -29,11 +29,11 @@ const CreateTask = (req, res) => {
 //display the Tasks
 const GetTask = (req, res) => {
     let sql = "SELECT * FROM tasks";
-    db.query(sql, (error, result) => {
+    db.query(sql, async (error, result) => {
         if (error) {
-            console.log("Unable to show the data");
+           console.log("Unable to show the data");
         } else {
-            res.send({ status: true, data: result });
+          await  res.send({ status: true, data: result });
             // console.log(result);
         }
     });
