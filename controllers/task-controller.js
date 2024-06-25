@@ -31,7 +31,9 @@ const GetTask = (req, res) => {
     let sql = "SELECT * FROM tasks";
     db.query(sql, (error, result) => {
         if (error) {
-           console.log("Unable to show the data");
+        //    console.log("Unable to show the data");
+           console.log(error);
+        error
         } else {
           res.send({ status: true, data: result });
             // console.log(result);
